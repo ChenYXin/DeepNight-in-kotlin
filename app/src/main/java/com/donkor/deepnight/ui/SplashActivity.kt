@@ -1,4 +1,4 @@
-package com.donkor.deepnight
+package com.donkor.deepnight.ui
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -7,12 +7,14 @@ import android.os.Message
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.WindowManager
+import com.donkor.deepnight.R
+import com.donkor.deepnight.utils.switchActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.lang.ref.WeakReference
 
-// *************************************************
-// Handler:跳转至不同页面
-// *************************************************
+/**
+ * 启动页
+ */
 private val SWITCH_MAINACTIVITY = 1000//跳转到主界面
 private val TAG: String? = "SplashActivity"
 
@@ -24,7 +26,8 @@ class SplashActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
         initView()
-        MyHandler(this).sendEmptyMessageDelayed(SWITCH_MAINACTIVITY, 1000)
+        MyHandler(this).sendEmptyMessageDelayed(SWITCH_MAINACTIVITY, 2000)
+
     }
 
     private class MyHandler(activity: SplashActivity) : Handler() {
@@ -34,10 +37,12 @@ class SplashActivity : AppCompatActivity() {
             if (mActivity.get() == null) {
                 return
             }
-//            val activity = mActivity.get()
+            val activity = mActivity.get()
             when (msg.what) {
                 SWITCH_MAINACTIVITY -> {
                     Log.e(TAG, "SplashActivity --- switch_MainActivity")
+                    activity!!.switchActivity<MainActivity>()
+                    activity.finish()
                 }
                 else -> {
                 }

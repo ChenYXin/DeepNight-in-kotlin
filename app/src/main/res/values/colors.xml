@@ -6,4 +6,6 @@
 
     <color name="gray">#848383</color>
     <color name="black">#000</color>
+    <!-- 蓝色 -->
+    <color name="blue">#4F94CD</color>
 </resources>

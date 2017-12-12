@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:id="@+id/ground1">
+        <item android:id="@+id/nav_item_all"
+        android:icon="@mipmap/icon_all"
+            app:showAsAction="ifRoom"
+            android:title="所有" />
+    </group>
+    <group android:id="@+id/ground2">
+        <item android:id="@+id/nav_item_bosom"
+            android:icon="@mipmap/icon_bosom"
+            app:showAsAction="ifRoom"
+            android:title="大胸妹" />
+        <item android:id="@+id/nav_item_buttocks"
+            android:icon="@mipmap/icon_buttocks"
+            android:title="小翘臀"
+            app:showAsAction="ifRoom"/>
+        <item android:id="@+id/nav_item_stockings"
+            android:icon="@mipmap/icon_stockings"
+            android:title="黑丝袜"
+            app:showAsAction="ifRoom"/>
+    </group>
+    <group android:id="@+id/ground3">
+        <item android:id="@+id/nav_item_legs"
+            android:icon="@mipmap/icon_legs"
+            app:showAsAction="ifRoom"
+            android:title="美腿控" />
+        <item android:id="@+id/nav_item_pretty"
+            android:icon="@mipmap/icon_pretty"
+            android:title="有颜值"
+            app:showAsAction="ifRoom"/>
+        <item android:id="@+id/nav_item_hodgepodge"
+            android:icon="@mipmap/icon_hodgepodge"
+            android:title="大杂烩"
+            app:showAsAction="ifRoom"/>
+    </group>
+    <group android:id="@+id/ground4">
+        <item android:id="@+id/nav_item_about"
+            android:icon="@mipmap/icon_about"
+            app:showAsAction="ifRoom"
+            android:title="关于DeepNight" />
+    </group>
+</menu>

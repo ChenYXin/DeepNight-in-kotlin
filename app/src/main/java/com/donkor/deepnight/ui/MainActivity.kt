@@ -2,11 +2,14 @@ package com.donkor.deepnight.ui
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.donkor.deepnight.R
+import com.donkor.deepnight.ui.fragment.AllFragment
+import com.donkor.deepnight.ui.fragment.BosomFragment
 import com.gyf.barlibrary.ImmersionBar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -21,17 +24,17 @@ class MainActivity : AppCompatActivity() {
 
     //    val mTabs = arrayListOf<String>("aaa", "bbb", "ccc")
 //    lateinit var mFragments: ArrayList<Fragment>
+    var allFragment: AllFragment? = null
+    var bosomFragment: BosomFragment? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ImmersionBar.with(this).transparentBar().barAlpha(0.3f).fitsSystemWindows(true).init()
+        ImmersionBar.with(this).transparentBar().barAlpha(0.6f).fitsSystemWindows(true).init()
         val window = window
         val params = window.attributes
         params.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         window.attributes = params
-
-        /*隐藏滑动条*/
-//        hideScrollBar()
 
         /*设置ActionBar*/
         setActionBar()
@@ -44,17 +47,35 @@ class MainActivity : AppCompatActivity() {
 
         /*设置ToolBar标题*/
         initToolBar()
-//        Thread(Runnable {
-//            val url = "http://gank.io/api/data/%E7%A6%8F%E5%88%A9/10/1"
-//
-//        }).start()
+
+        initFragment(savedInstanceState)
 
     }
 
-
-    /*去掉navigation中的滑动条*/
-    private fun hideScrollBar() {
-        nav_view.getChildAt(0).isVerticalScrollBarEnabled = false
+    private fun initFragment(savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            //异常情况
+            val mFragments: List<Fragment> = supportFragmentManager.fragments
+            for (item in mFragments) {
+                if (item is AllFragment) {
+                    allFragment = item
+                }
+                if (item is BosomFragment) {
+                    bosomFragment = item
+                }
+            }
+        } else {
+            allFragment = AllFragment()
+            bosomFragment = BosomFragment()
+            val fragmentTrans = supportFragmentManager.beginTransaction()
+            fragmentTrans.add(R.id.fl_content, allFragment)
+            fragmentTrans.add(R.id.fl_content, bosomFragment)
+            fragmentTrans.commit()
+        }
+        supportFragmentManager.beginTransaction()
+                .show(allFragment)
+                .hide(bosomFragment)
+                .commit()
     }
 
     /*设置ActionBar*/
@@ -77,21 +98,20 @@ class MainActivity : AppCompatActivity() {
     private fun setListener() {
         nav_view.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
-//                R.id.item_1 -> {
-//                }
-//                R.id.item_2 -> {
-//                }
-//                R.id.item_3 -> {
-//                }
+                R.id.nav_item_all -> {
+                }
+                R.id.nav_item_bosom -> {
+                }
             }
             drawer_layout.closeDrawer(GravityCompat.START)
             true
         }
     }
+
     /*设置ToolBar标题*/
     private fun initToolBar() {
-        tv_bar_title.text = "所有"
         tv_bar_title.typeface = Typeface.createFromAsset(this.assets, "fonts/Lobster-1.4.otf")
+        tv_bar_title.text = resources.getString(R.string.main_activity_item_all)
     }
 }
 

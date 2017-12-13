@@ -1,11 +1,11 @@
-package com.donkor.deepnight.mvp.bean
+package com.donkor.deepnight.mvp.model.bean
 
 /**
  * Created by donkor on 2017/12/11.
  */
 
 
-class AllBean {
+class AllBean{
     //http://gank.io/api/data/福利/10/1
     val error: Boolean? = true //false
     val results: List<Result>? = null

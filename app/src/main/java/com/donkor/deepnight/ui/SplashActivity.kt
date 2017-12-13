@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
         initView()
-        MyHandler(this).sendEmptyMessageDelayed(SWITCH_MAINACTIVITY, 2000)
+        MyHandler(this).sendEmptyMessageDelayed(SWITCH_MAINACTIVITY, 1000)
 
     }
 

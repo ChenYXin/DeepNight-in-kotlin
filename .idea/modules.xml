@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DeepNight.iml" filepath="$PROJECT_DIR$/DeepNight.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DeepNight-in-kotlin.iml" filepath="$PROJECT_DIR$/DeepNight-in-kotlin.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\DeepNight\DeepNight-in-kotlin.iml" filepath="D:\AndroidStudioProjects\DeepNight\DeepNight-in-kotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

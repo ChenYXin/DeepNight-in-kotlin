@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">DeepNight-in-kotlin</string>
+    <!--SplashActivity-->
     <string name="splash_activity_splash_instruction">DeepNight 陪你度过每一个深夜</string>
+    <!--MainActivity-->
+    <string name="main_activity_item_all">所有</string>
 </resources>

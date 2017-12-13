@@ -51,4 +51,9 @@ dependencies {
     compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 
     compile 'org.jsoup:jsoup:1.11.2'
+
+    //glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.28'
 }

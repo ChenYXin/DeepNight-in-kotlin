@@ -55,4 +55,10 @@ class SplashActivity : AppCompatActivity() {
         tv_splash_instruction.typeface = font
         tv_splash_instruction.text = getString(R.string.splash_activity_splash_instruction)
     }
+
+    override fun onDestroy() {
+        //  Remove all Runnable and Message.
+        MyHandler(this).removeCallbacksAndMessages(null)
+        super.onDestroy()
+    }
 }

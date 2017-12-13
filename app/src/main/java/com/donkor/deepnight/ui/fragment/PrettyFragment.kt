@@ -12,22 +12,22 @@ import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
 
 /**
- *
- * Created by Donkor on 2017/12/13.
+ * Created by donkor on 2017/12/14.
  */
-class BosomFragment : BaseFragment() {
+class PrettyFragment : BaseFragment() {
+
     override fun initView() {
         Thread(Runnable {
-            val doc: Document = Jsoup.connect(ApiService.BASE_URL + ApiService.ALL_URL+ApiService.BOSOM)
-                    .timeout(defaultTimeout).userAgent(defualtUserAgent2).get()
+            val doc: Document = Jsoup.connect(ApiService.BASE_URL + ApiService.ALL_URL + ApiService.Pretty)
+                    .timeout(defaultTimeout).userAgent(defualtUserAgent6).get()
             val imgSingle: Elements? = doc.getElementsByClass("img_single")
             mList= ArrayList()
-            mSwipeRefresh.setColorSchemeColors(Color.rgb(47,223,189))
+            mSwipeRefresh.setColorSchemeColors(Color.rgb(47, 223, 189))
 
 
             imgSingle?.map { it.select("img") }
                     ?.forEach {
-                        mCommonBean= CommonBean(it.attr("title"),it.attr("src"))
+                        mCommonBean= CommonBean(it.attr("title"), it.attr("src"))
                         mList!!.add(mCommonBean!!)
                     }
 
@@ -45,6 +45,5 @@ class BosomFragment : BaseFragment() {
     override fun getLayoutResources(): Int {
         return R.layout.fragment_common
     }
-
 
 }

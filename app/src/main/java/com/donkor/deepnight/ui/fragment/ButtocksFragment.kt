@@ -12,14 +12,14 @@ import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
 
 /**
- *
- * Created by Donkor on 2017/12/13.
+ * Created by donkor on 2017/12/14.
  */
-class BosomFragment : BaseFragment() {
+class ButtocksFragment : BaseFragment() {
+
     override fun initView() {
         Thread(Runnable {
-            val doc: Document = Jsoup.connect(ApiService.BASE_URL + ApiService.ALL_URL+ApiService.BOSOM)
-                    .timeout(defaultTimeout).userAgent(defualtUserAgent2).get()
+            val doc: Document = Jsoup.connect(ApiService.BASE_URL + ApiService.ALL_URL+ApiService.Buttocks)
+                    .timeout(defaultTimeout).userAgent(defualtUserAgent3).get()
             val imgSingle: Elements? = doc.getElementsByClass("img_single")
             mList= ArrayList()
             mSwipeRefresh.setColorSchemeColors(Color.rgb(47,223,189))
@@ -45,6 +45,5 @@ class BosomFragment : BaseFragment() {
     override fun getLayoutResources(): Int {
         return R.layout.fragment_common
     }
-
 
 }

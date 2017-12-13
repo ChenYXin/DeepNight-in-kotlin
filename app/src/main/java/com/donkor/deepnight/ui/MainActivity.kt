@@ -8,8 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.donkor.deepnight.R
-import com.donkor.deepnight.ui.fragment.AllFragment
-import com.donkor.deepnight.ui.fragment.BosomFragment
+import com.donkor.deepnight.ui.fragment.*
 import com.gyf.barlibrary.ImmersionBar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -24,8 +23,13 @@ class MainActivity : AppCompatActivity() {
 
     //    val mTabs = arrayListOf<String>("aaa", "bbb", "ccc")
 //    lateinit var mFragments: ArrayList<Fragment>
-    var allFragment: AllFragment? = null
-    var bosomFragment: BosomFragment? = null
+    private var allFragment: AllFragment? = null
+    private var bosomFragment: BosomFragment? = null
+    private var stockingFragment: StockingsFragment? = null
+    private var buttocksFragment: ButtocksFragment? = null
+    private var legsFragment: LegsFragment? = null
+    private var prettyFragment: PrettyFragment? = null
+    private var hodgepodgeFragment: HodgepodgeFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,18 +67,48 @@ class MainActivity : AppCompatActivity() {
                 if (item is BosomFragment) {
                     bosomFragment = item
                 }
+                if (item is StockingsFragment) {
+                    stockingFragment = item
+                }
+                if (item is ButtocksFragment) {
+                    buttocksFragment = item
+                }
+                if (item is LegsFragment) {
+                    legsFragment = item
+                }
+                if (item is PrettyFragment) {
+                    prettyFragment = item
+                }
+                if (item is HodgepodgeFragment) {
+                    hodgepodgeFragment = item
+                }
             }
         } else {
             allFragment = AllFragment()
             bosomFragment = BosomFragment()
+            stockingFragment = StockingsFragment()
+            buttocksFragment = ButtocksFragment()
+            legsFragment = LegsFragment()
+            prettyFragment = PrettyFragment()
+            hodgepodgeFragment = HodgepodgeFragment()
             val fragmentTrans = supportFragmentManager.beginTransaction()
             fragmentTrans.add(R.id.fl_content, allFragment)
             fragmentTrans.add(R.id.fl_content, bosomFragment)
+            fragmentTrans.add(R.id.fl_content, stockingFragment)
+            fragmentTrans.add(R.id.fl_content, buttocksFragment)
+            fragmentTrans.add(R.id.fl_content, legsFragment)
+            fragmentTrans.add(R.id.fl_content, prettyFragment)
+            fragmentTrans.add(R.id.fl_content, hodgepodgeFragment)
             fragmentTrans.commit()
         }
         supportFragmentManager.beginTransaction()
                 .show(allFragment)
                 .hide(bosomFragment)
+                .hide(stockingFragment)
+                .hide(buttocksFragment)
+                .hide(legsFragment)
+                .hide(prettyFragment)
+                .hide(hodgepodgeFragment)
                 .commit()
     }
 
@@ -99,8 +133,81 @@ class MainActivity : AppCompatActivity() {
         nav_view.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_item_all -> {
+                    tv_bar_title.text = resources.getString(R.string.main_activity_item_all)
+                    supportFragmentManager.beginTransaction().show(allFragment)
+                            .hide(bosomFragment)
+                            .hide(stockingFragment)
+                            .hide(buttocksFragment)
+                            .hide(legsFragment)
+                            .hide(prettyFragment)
+                            .hide(hodgepodgeFragment)
+                            .commit()
                 }
                 R.id.nav_item_bosom -> {
+                    tv_bar_title.text = resources.getString(R.string.main_activity_item_bosom)
+                    supportFragmentManager.beginTransaction().show(bosomFragment)
+                            .hide(allFragment)
+                            .hide(stockingFragment)
+                            .hide(buttocksFragment)
+                            .hide(legsFragment)
+                            .hide(prettyFragment)
+                            .hide(hodgepodgeFragment)
+                            .commit()
+                }
+                R.id.nav_item_buttocks -> {
+                    tv_bar_title.text = "小翘臀"
+                    supportFragmentManager.beginTransaction().show(buttocksFragment)
+                            .hide(allFragment)
+                            .hide(bosomFragment)
+                            .hide(stockingFragment)
+                            .hide(legsFragment)
+                            .hide(prettyFragment)
+                            .hide(hodgepodgeFragment)
+                            .commit()
+                }
+                R.id.nav_item_stockings -> {
+                    tv_bar_title.text = "黑丝袜"
+                    supportFragmentManager.beginTransaction().show(stockingFragment)
+                            .hide(allFragment)
+                            .hide(bosomFragment)
+                            .hide(buttocksFragment)
+                            .hide(legsFragment)
+                            .hide(prettyFragment)
+                            .hide(hodgepodgeFragment)
+                            .commit()
+                }
+                R.id.nav_item_legs -> {
+                    tv_bar_title.text = "美腿控"
+                    supportFragmentManager.beginTransaction().show(legsFragment)
+                            .hide(allFragment)
+                            .hide(bosomFragment)
+                            .hide(stockingFragment)
+                            .hide(buttocksFragment)
+                            .hide(prettyFragment)
+                            .hide(hodgepodgeFragment)
+                            .commit()
+                }
+                R.id.nav_item_pretty -> {
+                    tv_bar_title.text = "有颜值"
+                    supportFragmentManager.beginTransaction().show(prettyFragment)
+                            .hide(allFragment)
+                            .hide(bosomFragment)
+                            .hide(stockingFragment)
+                            .hide(buttocksFragment)
+                            .hide(legsFragment)
+                            .hide(hodgepodgeFragment)
+                            .commit()
+                }
+                R.id.nav_item_hodgepodge -> {
+                    tv_bar_title.text = "大杂烩"
+                    supportFragmentManager.beginTransaction().show(hodgepodgeFragment)
+                            .hide(allFragment)
+                            .hide(bosomFragment)
+                            .hide(stockingFragment)
+                            .hide(buttocksFragment)
+                            .hide(legsFragment)
+                            .hide(prettyFragment)
+                            .commit()
                 }
             }
             drawer_layout.closeDrawer(GravityCompat.START)

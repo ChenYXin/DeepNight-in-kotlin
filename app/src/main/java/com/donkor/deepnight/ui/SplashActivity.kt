@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.WindowManager
 import com.donkor.deepnight.R
 import com.donkor.deepnight.utils.switchActivity
@@ -40,7 +39,7 @@ class SplashActivity : AppCompatActivity() {
             val activity = mActivity.get()
             when (msg.what) {
                 SWITCH_MAINACTIVITY -> {
-                    Log.e(TAG, "SplashActivity --- switch_MainActivity")
+//                    Log.e(TAG, "SplashActivity --- switch_MainActivity")
                     activity!!.switchActivity<MainActivity>()
                     activity.finish()
                 }

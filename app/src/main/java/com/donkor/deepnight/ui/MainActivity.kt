@@ -1,5 +1,6 @@
 package com.donkor.deepnight.ui
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -207,6 +208,9 @@ class MainActivity : AppCompatActivity() {
                             .hide(legsFragment)
                             .hide(prettyFragment)
                             .commit()
+                }
+                R.id.nav_item_about -> {
+                    startActivity(Intent(this,AboutActivity::class.java))
                 }
             }
             drawer_layout.closeDrawer(GravityCompat.START)

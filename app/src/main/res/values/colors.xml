@@ -8,4 +8,6 @@
     <color name="black">#000</color>
     <!-- 蓝色 -->
     <color name="blue">#4F94CD</color>
+    <!-- 米色 -->
+    <color name="backcolor">#f0f0f0</color>
 </resources>

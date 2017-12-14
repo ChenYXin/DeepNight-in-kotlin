@@ -1,75 +1,93 @@
 package com.donkor.deepnight.ui.fragment
 
-import android.os.Bundle
-import android.util.Log
-import android.view.View
+import android.graphics.Color
+import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.donkor.deepnight.R
+import com.donkor.deepnight.adapter.CommonAdapter
+import com.donkor.deepnight.mvp.model.bean.CommonBean
+import com.donkor.deepnight.network.ApiService
+import kotlinx.android.synthetic.main.fragment_common.*
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
+import org.jsoup.select.Elements
+
+
 
 /**
- *
+ *所有
  * Created by Donkor on 2017/12/13.
  */
-class AllFragment : CommonLazyLoadFragment() {
+class AllFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener{
 
-    override fun init(view: View?, savedInstanceState: Bundle?) {
-        Log.e("asd","------------------all--1")
-        super.init(view, savedInstanceState)
-    }
-    override fun lazyInit(view: View?, savedInstanceState: Bundle?) {
-        Log.e("asd","------------------all--2")
-    }
+    private var mList: ArrayList<CommonBean>? = null
 
-    override fun setEvent(view: View?) {
-        Log.e("asd","------------------all--3")
+    private var mPage: Int? = 1
+    override fun loadData() {
+        if (mList == null)
+            allData(mPage)
     }
 
-//    //    var isPrepared: Boolean = false
-//    override fun initView() {
-////        isPrepared = true
-////        lazyLoad()
-//    }
-//
-//    override fun loadData() {
-//        Log.e("asd","---------------1")
-//        Thread(Runnable {
-//            val doc: Document = Jsoup.connect(ApiService.BASE_URL + ApiService.ALL_URL)
-//                    .timeout(defaultTimeout).userAgent(defualtUserAgent1).get()
-//            val imgSingle: Elements? = doc.getElementsByClass("img_single")
-//            mList = ArrayList()
-//            mSwipeRefresh.setColorSchemeColors(Color.rgb(47, 223, 189))
-//
-//
-//            imgSingle?.map { it.select("img") }
-//                    ?.forEach {
-//                        mCommonBean = CommonBean(it.attr("title"), it.attr("src"))
-//                        mList!!.add(mCommonBean!!)
-//                    }
-//
-//
-//            activity.runOnUiThread({
-//                rv_common_list.layoutManager = LinearLayoutManager(context)
-//                mCommomAdapter = CommonAdapter(context!!, mList!!)
-//                rv_common_list.adapter = mCommomAdapter
-//            })
-//        }).start()
-//    }
+    override fun initView() {
+        mSwipeRefresh.setColorSchemeColors(Color.rgb(47, 223, 189))
+        mSwipeRefresh.setOnRefreshListener(this)
+        mRvCommonList.layoutManager = GridLayoutManager(context, 2)
+        mList = ArrayList()
+        mRvCommonList.setOnScrollListener(object : RecyclerView.OnScrollListener() {
+            var lastVisibleItem:Int?=0
+            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem!! + 1 == mCommomAdapter?.itemCount) {
+                    mPage= mPage!! +1
+                    allData(mPage)
+                }
+            }
 
-//    override fun setUserVisibleHint(isVisibleToUser: Boolean){
-//        Log.e("asd","aalll-----------")
-//    }
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView?.layoutManager as LinearLayoutManager
+                //最后一个可见的ITEM
+                lastVisibleItem = layoutManager.findLastVisibleItemPosition()
+            }
+        })
+        allData(mPage)
+    }
 
-//    override fun onFragmentVisiableChange(b: Boolean) {
-//        super.onFragmentVisiableChange(b)
-//        if (b) loadData()
-//    }
-//    override fun lazyLoad() {
-////        if (!isPrepared || !isVisible) {
-////            return
-////        }
-//        Log.e("asd", "lazyLoad --- AllFragment")
-//        //填充各控件的数据
-//
-//    }
+
+
+    override fun onRefresh() {
+//        Log.e("asd", "onRefresh")
+        mSwipeRefresh.isRefreshing = false
+        allData(mPage)
+    }
+
+    private fun allData(page:Int?) {
+        Thread(Runnable {
+            val doc: Document = Jsoup.connect(ApiService.BASE_URL + ApiService.ALL_URL+page)
+                    .timeout(defaultTimeout).userAgent(defualtUserAgent).get()
+            val imgSingle: Elements? = doc.getElementsByClass("img_single")
+
+
+            imgSingle?.map { it.select("img") }
+                    ?.forEach {
+                        mCommonBean = CommonBean(it.attr("title"), it.attr("src"))
+                        mList!!.add(mCommonBean!!)
+                    }
+
+
+            activity.runOnUiThread({
+                if(mPage!=1){
+                    mRvCommonList.adapter.notifyDataSetChanged()
+                }else{
+                    mCommomAdapter = CommonAdapter(context!!, mList!!)
+                    mRvCommonList.adapter = mCommomAdapter
+                }
+
+            })
+        }).start()
+    }
 
     override fun getLayoutResources(): Int {
         return R.layout.fragment_common

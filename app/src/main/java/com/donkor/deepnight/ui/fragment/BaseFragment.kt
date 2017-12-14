@@ -14,74 +14,32 @@ import com.donkor.deepnight.mvp.model.bean.CommonBean
  */
 abstract class BaseFragment : Fragment() {
     protected val defaultTimeout: Int = 3000
-    protected val defualtUserAgent1 = "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52"
-    protected val defualtUserAgent2 = "Mozilla/5.0 (Windows NT 5.2) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.122 Safari/534.30"
-    protected val defualtUserAgent3 = "Mozilla/5.0 (Windows NT 5.2) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.122 Safari/534.30"
-    protected val defualtUserAgent4 = "Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0"
-    protected val defualtUserAgent5 = "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1"
-    protected val defualtUserAgent6 = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.2; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET4.0E; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C)"
-    protected val defualtUserAgent7 = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727) "
+    protected val defualtUserAgent = "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52"
     protected var mCommomAdapter: CommonAdapter? = null
-    protected var mList: ArrayList<CommonBean>? = null
     protected var mCommonBean: CommonBean? = null
 
-    private var rootView: View? = null
-    //    var isFirst: Boolean = false
-//    var isFragmentVisiable: Boolean = false
-//    private var isVisibleView = false//当前Fragment是否可见
-//    private var isInitView = false//是否与View建立起映射关系
-//    private var isFirstLoad = true//是否是第一次加载数据
-    //    var doc: Document? = null
-    //    val img_single = doc!!.getElementsByClass("img_single")
+    var rootView: View? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        var rootView: View? = inflater?.inflate(getLayoutResources(), null)
         if (rootView == null) {
             rootView = inflater?.inflate(getLayoutResources(), container, false)
         }
-//        Log.e("sad", " boolean : " + (rootView == null))
-        init(rootView, savedInstanceState)
-        setEvent(rootView)
-//        isInitView = true
-//        lazyLoadData()
         return rootView
     }
 
-//    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-//
-//        Log.e("asd","---------------------0")
-//        if (isVisibleToUser) {
-//            isFragmentVisiable = true
-//        }
-//        Log.e("asd","---------------------1")
-//        if (rootView == null) {
-//            return
-//        }
-//        Log.e("asd","isFirst:"+isFirst)
-//        Log.e("asd","isFragmentVisiable:"+isFragmentVisiable)
-//        //可见，并且没有加载过
-//        if (!isFirst && isFragmentVisiable) {
-//            onFragmentVisiableChange(true)
-//            return
-//        }
-//        //由可见——>不可见 已经加载过
-//        if (isFragmentVisiable) {
-//            onFragmentVisiableChange(false)
-//            isFragmentVisiable = false
-//        }
-//        super.setUserVisibleHint(isVisibleToUser)
-//    }
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+    }
 
-//    private fun onFragmentVisiableChange(b: Boolean) {
-//        Log.e("asd", "boolean:" + b)
-//        if (b) loadData()
-//    }
-//    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//    }
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden)
+            loadData()
+
+    }
+
 
     abstract fun getLayoutResources(): Int
-    abstract fun init(view: View?, savedInstanceState: Bundle?)
-    abstract fun setEvent(view: View?)
-//    abstract fun loadData()
+    abstract fun initView()
+    abstract fun loadData()
 }

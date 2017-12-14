@@ -1,7 +1,5 @@
 package com.donkor.deepnight.network
 
-import retrofit2.http.GET
-
 /**
  * Created by donkor on 2017/12/11.
  */
@@ -10,22 +8,19 @@ interface ApiService {
         val BASE_URL: String
             get() = "https://www.dbmeinv.com/dbgroup/"
         val ALL_URL: String
-            get() = "show.htm"
+            get() = "show.htm?pager_offset="
         val BOSOM: String
-            get() = "?cid=2"
+            get() = "show.htm?cid=2&pager_offset="
         val Buttocks: String
-            get() = "?cid=6"
+            get() = "show.htm?cid=6?pager_offset="
         val Stockings: String
-            get() = "?cid=7"
+            get() = "show.htm?cid=7&pager_offset="
         val Legs: String
-            get() = "?cid=3"
+            get() = "show.htm?cid=3&pager_offset="
         val Pretty: String
-            get() = "?cid=4"
+            get() = "show.htm?cid=4&pager_offset="
         val Hodgepodge: String
-            get() = "?cid=5"
+            get() = "show.htm?cid=5&pager_offset="
     }
-
-    @GET("show.htm")
-    fun getAllData(): String
 
 }

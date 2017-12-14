@@ -2,7 +2,6 @@ package com.donkor.deepnight.ui
 
 import android.graphics.Typeface
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -12,7 +11,6 @@ import com.donkor.deepnight.ui.fragment.*
 import com.gyf.barlibrary.ImmersionBar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
-
 
 /**
  * 主页面
@@ -57,50 +55,57 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFragment(savedInstanceState: Bundle?) {
-        if (savedInstanceState != null) {
-            //异常情况
-            val mFragments: List<Fragment> = supportFragmentManager.fragments
-            for (item in mFragments) {
-                if (item is AllFragment) {
-                    allFragment = item
-                }
-                if (item is BosomFragment) {
-                    bosomFragment = item
-                }
-                if (item is StockingsFragment) {
-                    stockingFragment = item
-                }
-                if (item is ButtocksFragment) {
-                    buttocksFragment = item
-                }
-                if (item is LegsFragment) {
-                    legsFragment = item
-                }
-                if (item is PrettyFragment) {
-                    prettyFragment = item
-                }
-                if (item is HodgepodgeFragment) {
-                    hodgepodgeFragment = item
-                }
-            }
-        } else {
-            allFragment = AllFragment()
-            bosomFragment = BosomFragment()
-            stockingFragment = StockingsFragment()
-            buttocksFragment = ButtocksFragment()
-            legsFragment = LegsFragment()
-            prettyFragment = PrettyFragment()
-            hodgepodgeFragment = HodgepodgeFragment()
-            val fragmentTrans = supportFragmentManager.beginTransaction()
-            fragmentTrans.add(R.id.fl_content, allFragment)
-            fragmentTrans.add(R.id.fl_content, bosomFragment)
-            fragmentTrans.add(R.id.fl_content, stockingFragment)
-            fragmentTrans.add(R.id.fl_content, buttocksFragment)
-            fragmentTrans.add(R.id.fl_content, legsFragment)
-            fragmentTrans.add(R.id.fl_content, prettyFragment)
-            fragmentTrans.add(R.id.fl_content, hodgepodgeFragment)
-            fragmentTrans.commit()
-        }
+//        if (savedInstanceState != null) {
+//            //异常情况
+//            val mFragments: List<Fragment> = supportFragmentManager.fragments
+//            for (item in mFragments) {
+//                if (item is AllFragment) {
+//                    allFragment = item
+//                }
+//                if (item is BosomFragment) {
+//                    bosomFragment = item
+//                }
+//                if (item is StockingsFragment) {
+//                    stockingFragment = item
+//                }
+//                if (item is ButtocksFragment) {
+//                    buttocksFragment = item
+//                }
+//                if (item is LegsFragment) {
+//                    legsFragment = item
+//                }
+//                if (item is PrettyFragment) {
+//                    prettyFragment = item
+//                }
+//                if (item is HodgepodgeFragment) {
+//                    hodgepodgeFragment = item
+//                }
+//            }
+//        } else {
+//            allFragment = AllFragment()
+//            bosomFragment = BosomFragment()
+//            stockingFragment = StockingsFragment()
+//            buttocksFragment = ButtocksFragment()
+//            legsFragment = LegsFragment()
+//            prettyFragment = PrettyFragment()
+//            hodgepodgeFragment = HodgepodgeFragment()
+//            val fragmentTrans = supportFragmentManager.beginTransaction()
+//            fragmentTrans.add(R.id.fl_content, allFragment)
+//            fragmentTrans.add(R.id.fl_content, bosomFragment)
+//            fragmentTrans.add(R.id.fl_content, stockingFragment)
+//            fragmentTrans.add(R.id.fl_content, buttocksFragment)
+//            fragmentTrans.add(R.id.fl_content, legsFragment)
+//            fragmentTrans.add(R.id.fl_content, prettyFragment)
+//            fragmentTrans.add(R.id.fl_content, hodgepodgeFragment)
+//            fragmentTrans.commit()
+//        }
+        allFragment = AllFragment()
+        bosomFragment = BosomFragment()
+        stockingFragment = StockingsFragment()
+        buttocksFragment = ButtocksFragment()
+        legsFragment = LegsFragment()
+        prettyFragment = PrettyFragment()
+        hodgepodgeFragment = HodgepodgeFragment()
         supportFragmentManager.beginTransaction()
                 .show(allFragment)
                 .hide(bosomFragment)
@@ -110,6 +115,15 @@ class MainActivity : AppCompatActivity() {
                 .hide(prettyFragment)
                 .hide(hodgepodgeFragment)
                 .commit()
+//        allFragment = AllFragment()
+//        supportFragmentManager.beginTransaction().replace(R.id.fl_content,allFragment)
+////                            .hide(bosomFragment)
+////                            .hide(stockingFragment)
+////                            .hide(buttocksFragment)
+////                            .hide(legsFragment)
+////                            .hide(prettyFragment)
+////                            .hide(hodgepodgeFragment)
+//                .commit()
     }
 
     /*设置ActionBar*/
@@ -134,6 +148,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_item_all -> {
                     tv_bar_title.text = resources.getString(R.string.main_activity_item_all)
+//                    allFragment = AllFragment()
                     supportFragmentManager.beginTransaction().show(allFragment)
                             .hide(bosomFragment)
                             .hide(stockingFragment)
@@ -145,6 +160,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_item_bosom -> {
                     tv_bar_title.text = resources.getString(R.string.main_activity_item_bosom)
+//                    bosomFragment = BosomFragment()
                     supportFragmentManager.beginTransaction().show(bosomFragment)
                             .hide(allFragment)
                             .hide(stockingFragment)

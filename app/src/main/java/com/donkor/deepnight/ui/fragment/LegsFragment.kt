@@ -1,44 +1,48 @@
 package com.donkor.deepnight.ui.fragment
 
-import android.graphics.Color
-import android.support.v7.widget.LinearLayoutManager
+import android.os.Bundle
+import android.view.View
 import com.donkor.deepnight.R
-import com.donkor.deepnight.adapter.CommonAdapter
-import com.donkor.deepnight.mvp.model.bean.CommonBean
-import com.donkor.deepnight.network.ApiService
-import kotlinx.android.synthetic.main.fragment_common.*
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
-import org.jsoup.select.Elements
 
 /**
  * Created by donkor on 2017/12/14.
  */
-class LegsFragment : BaseFragment() {
-
-    override fun initView() {
-        Thread(Runnable {
-            val doc: Document = Jsoup.connect(ApiService.BASE_URL + ApiService.ALL_URL + ApiService.Legs)
-                    .timeout(defaultTimeout).userAgent(defualtUserAgent5).get()
-            val imgSingle: Elements? = doc.getElementsByClass("img_single")
-            mList= ArrayList()
-            mSwipeRefresh.setColorSchemeColors(Color.rgb(47, 223, 189))
-
-
-            imgSingle?.map { it.select("img") }
-                    ?.forEach {
-                        mCommonBean= CommonBean(it.attr("title"), it.attr("src"))
-                        mList!!.add(mCommonBean!!)
-                    }
-
-
-            activity.runOnUiThread({
-                rv_common_list.layoutManager= LinearLayoutManager(context)
-                mCommomAdapter= CommonAdapter(context!!, mList!!)
-                rv_common_list.adapter=mCommomAdapter
-            })
-        }).start()
+class LegsFragment : CommonLazyLoadFragment() {
+    override fun lazyInit(view: View?, savedInstanceState: Bundle?) {
     }
+
+    override fun setEvent(view: View?) {
+    }
+
+    override fun init(view: View?, savedInstanceState: Bundle?) {
+    }
+//    override fun loadData() {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
+//
+//    override fun initView() {
+//        Thread(Runnable {
+//            val doc: Document = Jsoup.connect(ApiService.BASE_URL + ApiService.ALL_URL + ApiService.Legs)
+//                    .timeout(defaultTimeout).userAgent(defualtUserAgent5).get()
+//            val imgSingle: Elements? = doc.getElementsByClass("img_single")
+//            mList= ArrayList()
+//            mSwipeRefresh.setColorSchemeColors(Color.rgb(47, 223, 189))
+//
+//
+//            imgSingle?.map { it.select("img") }
+//                    ?.forEach {
+//                        mCommonBean= CommonBean(it.attr("title"), it.attr("src"))
+//                        mList!!.add(mCommonBean!!)
+//                    }
+//
+//
+//            activity.runOnUiThread({
+//                rv_common_list.layoutManager= LinearLayoutManager(context)
+//                mCommomAdapter= CommonAdapter(context!!, mList!!)
+//                rv_common_list.adapter=mCommomAdapter
+//            })
+//        }).start()
+//    }
 
 
 

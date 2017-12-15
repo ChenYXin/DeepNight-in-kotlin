@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -18,7 +17,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.donkor.deepnight.R;
-import com.liulishuo.filedownloader.FileDownloader;
 import com.wingsofts.dragphotoview.DragPhotoView;
 
 import java.util.ArrayList;
@@ -52,9 +50,7 @@ public class DragPhotoActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
-        FileDownloader.setup(DragPhotoActivity.this);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
-        mLinDownloadPic = (LinearLayout) findViewById(R.id.linDownloadPic);
 
         mList = new ArrayList<>();
 
@@ -64,7 +60,7 @@ public class DragPhotoActivity extends AppCompatActivity {
 
         for (int i = 0; i < mPhotoViews.length; i++) {
             mPhotoViews[i] = (DragPhotoView) View.inflate(this, R.layout.item_viewpager, null);
-            Glide.with(this).load(getIntent().getStringExtra("picUrl"))
+             Glide.with(this).load(getIntent().getStringExtra("picUrl"))
                     .asBitmap()
                     .format(DecodeFormat.PREFER_ARGB_8888)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -85,74 +81,6 @@ public class DragPhotoActivity extends AppCompatActivity {
                     performExitAnimation(view, x, y, w, h);
                 }
             });
-            mLinDownloadPic.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String url = getIntent().getStringExtra("picUrl");
-                    Log.e("asd", "url " + getIntent().getStringExtra("picUrl"));
-//                    GlideDownloadFileUtils.Companion.savePicture(DragPhotoActivity.this, "b.jpg", url);
-//                    String filePath=Environment.getExternalStorageDirectory().getPath() + "/DeepNight";
-//                    File file=new File(filePath);
-//                    if (!file.exists()){
-//                        file.mkdirs();
-//                    }
-
-//                    FileDownloader.getImpl().create(url)
-//                            .setPath(filePath)
-//                            .setListener(new FileDownloadListener() {
-//                                @Override
-//                                protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) {
-//                                    Log.e("asd", " pending");
-//                                }
-//
-//                                @Override
-//                                protected void connected(BaseDownloadTask task, String etag, boolean isContinue, int soFarBytes, int totalBytes) {
-//                                    Log.e("asd", " connected");
-//                                }
-//
-//                                @Override
-//                                protected void progress(BaseDownloadTask task, int soFarBytes, int totalBytes) {
-//                                    Log.e("asd", "soFarBytes : " + soFarBytes + " ,totalBytes : " + totalBytes);
-//                                }
-//
-//                                @Override
-//                                protected void blockComplete(BaseDownloadTask task) {
-//                                    Log.e("asd", " blockComplete");
-//                                }
-//
-//                                @Override
-//                                protected void retry(final BaseDownloadTask task, final Throwable ex, final int retryingTimes, final int soFarBytes) {
-//                                    Log.e("asd", " retry");
-//                                }
-//
-//                                @Override
-//                                protected void completed(BaseDownloadTask task) {
-//                                    Log.e("asd", "completed ");
-//                                }
-//
-//                                @Override
-//                                protected void paused(BaseDownloadTask task, int soFarBytes, int totalBytes) {
-//                                }
-//
-//                                @Override
-//                                protected void error(BaseDownloadTask task, Throwable e) {
-//                                    Log.e("asd", "e : " + e.getMessage());
-//                                }
-//
-//                                @Override
-//                                protected void warn(BaseDownloadTask task) {
-//                                    Log.e("asd", " warn");
-//                                }
-//                            }).start();
-                }
-            });
-//            mPhotoViews[i].setOnLongClickListener(new View.OnLongClickListener() {
-//                @Override
-//                public boolean onLongClick(View view) {
-//                    Log.e("asd", "onLongClick");
-//                    return false;
-//                }
-//            });
         }
 
         mViewPager.setAdapter(new PagerAdapter() {

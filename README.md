@@ -13,6 +13,9 @@ DeepNight 陪你度过每一个深夜，妹纸看不停<br>
 
 <img src="https://raw.githubusercontent.com/ChenYXin/DeepNight-in-kotlin/master/Screenshot/all_pic.png" width=25% height=25% />
 
+<img src="https://raw.githubusercontent.com/ChenYXin/DeepNight-in-kotlin/master/Screenshot/drag_pic.png" width=25% height=25% />
+
+
 # Features
 - Material Design设计风格
 - SwipeRefreshLayout结合RecyclerView下拉刷新上拉加载

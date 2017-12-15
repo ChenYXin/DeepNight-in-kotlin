@@ -1,6 +1,5 @@
 package com.donkor.deepnight.ui
 
-import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -10,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.donkor.deepnight.R
 import com.donkor.deepnight.ui.fragment.*
+import com.donkor.deepnight.utils.switchActivity
 import com.gyf.barlibrary.ImmersionBar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -20,9 +20,6 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
 private val TAG: String? = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
-
-    //    val mTabs = arrayListOf<String>("aaa", "bbb", "ccc")
-//    lateinit var mFragments: ArrayList<Fragment>
     private var allFragment: AllFragment? = null
     private var bosomFragment: BosomFragment? = null
     private var stockingFragment: StockingsFragment? = null
@@ -132,8 +129,8 @@ class MainActivity : AppCompatActivity() {
         nav_view.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_item_all -> {
+                    //所有
                     tv_bar_title.text = resources.getString(R.string.main_activity_item_all)
-//                    allFragment = AllFragment()
                     supportFragmentManager.beginTransaction().show(allFragment)
                             .hide(bosomFragment)
                             .hide(stockingFragment)
@@ -144,6 +141,7 @@ class MainActivity : AppCompatActivity() {
                             .commit()
                 }
                 R.id.nav_item_bosom -> {
+                    //大胸妹
                     tv_bar_title.text = resources.getString(R.string.main_activity_item_bosom)
                     supportFragmentManager.beginTransaction().show(bosomFragment)
                             .hide(allFragment)
@@ -155,7 +153,8 @@ class MainActivity : AppCompatActivity() {
                             .commit()
                 }
                 R.id.nav_item_buttocks -> {
-                    tv_bar_title.text = "小翘臀"
+                    //小翘臀
+                    tv_bar_title.text = resources.getString(R.string.main_activity_item_buttocks)
                     supportFragmentManager.beginTransaction().show(buttocksFragment)
                             .hide(allFragment)
                             .hide(bosomFragment)
@@ -166,7 +165,8 @@ class MainActivity : AppCompatActivity() {
                             .commit()
                 }
                 R.id.nav_item_stockings -> {
-                    tv_bar_title.text = "黑丝袜"
+                    //黑丝袜
+                    tv_bar_title.text = resources.getString(R.string.main_activity_item_stockings)
                     supportFragmentManager.beginTransaction().show(stockingFragment)
                             .hide(allFragment)
                             .hide(bosomFragment)
@@ -177,7 +177,8 @@ class MainActivity : AppCompatActivity() {
                             .commit()
                 }
                 R.id.nav_item_legs -> {
-                    tv_bar_title.text = "美腿控"
+                    //美腿控
+                    tv_bar_title.text = resources.getString(R.string.main_activity_item_legs)
                     supportFragmentManager.beginTransaction().show(legsFragment)
                             .hide(allFragment)
                             .hide(bosomFragment)
@@ -188,7 +189,8 @@ class MainActivity : AppCompatActivity() {
                             .commit()
                 }
                 R.id.nav_item_pretty -> {
-                    tv_bar_title.text = "有颜值"
+                    //有颜值
+                    tv_bar_title.text = resources.getString(R.string.main_activity_item_pretty)
                     supportFragmentManager.beginTransaction().show(prettyFragment)
                             .hide(allFragment)
                             .hide(bosomFragment)
@@ -199,7 +201,8 @@ class MainActivity : AppCompatActivity() {
                             .commit()
                 }
                 R.id.nav_item_hodgepodge -> {
-                    tv_bar_title.text = "大杂烩"
+                    //大杂烩
+                    tv_bar_title.text = resources.getString(R.string.main_activity_item_hodgepodge)
                     supportFragmentManager.beginTransaction().show(hodgepodgeFragment)
                             .hide(allFragment)
                             .hide(bosomFragment)
@@ -210,7 +213,7 @@ class MainActivity : AppCompatActivity() {
                             .commit()
                 }
                 R.id.nav_item_about -> {
-                    startActivity(Intent(this,AboutActivity::class.java))
+                    switchActivity<AboutActivity>()
                 }
             }
             drawer_layout.closeDrawer(GravityCompat.START)

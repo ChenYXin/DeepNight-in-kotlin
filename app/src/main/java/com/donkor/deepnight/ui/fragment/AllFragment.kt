@@ -2,7 +2,6 @@ package com.donkor.deepnight.ui.fragment
 
 import android.graphics.Color
 import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.donkor.deepnight.R
@@ -33,7 +32,8 @@ class AllFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener{
     override fun initView() {
         mSwipeRefresh.setColorSchemeColors(Color.rgb(47, 223, 189))
         mSwipeRefresh.setOnRefreshListener(this)
-        mRvCommonList.layoutManager = GridLayoutManager(context, 2)
+        mRvCommonList.layoutManager = LinearLayoutManager(context)
+//        mRvCommonList.layoutManager = GridLayoutManager(context, 2)
         mList = ArrayList()
         mRvCommonList.setOnScrollListener(object : RecyclerView.OnScrollListener() {
             var lastVisibleItem:Int?=0
@@ -81,7 +81,7 @@ class AllFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener{
                 if(mPage!=1){
                     mRvCommonList.adapter.notifyDataSetChanged()
                 }else{
-                    mCommomAdapter = CommonAdapter(context!!, mList!!)
+                    mCommomAdapter = CommonAdapter(activity, mList)
                     mRvCommonList.adapter = mCommomAdapter
                 }
 
@@ -92,5 +92,4 @@ class AllFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener{
     override fun getLayoutResources(): Int {
         return R.layout.fragment_common
     }
-
 }

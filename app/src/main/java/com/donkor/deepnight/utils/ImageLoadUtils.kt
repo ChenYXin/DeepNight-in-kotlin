@@ -12,7 +12,7 @@ import com.donkor.deepnight.R
  */
 class ImageLoadUtils{
     companion object {
-        fun display(context: Context, imageView: ImageView?, url: String) {
+        fun display(context: Context?, imageView: ImageView?, url: String?) {
             if (imageView == null) {
                 throw IllegalArgumentException("argument error")
             }
@@ -23,7 +23,7 @@ class ImageLoadUtils{
                     .error(R.mipmap.ic_empty_picture)
                     .crossFade().into(imageView)
         }
-        fun displayHigh(context: Context, imageView: ImageView?, url: String){
+        fun displayHigh(context: Context?, imageView: ImageView?, url: String?){
             if (imageView == null) {
                 throw IllegalArgumentException("argument error")
             }

@@ -10,4 +10,6 @@
     <color name="blue">#4F94CD</color>
     <!-- 米色 -->
     <color name="backcolor">#f0f0f0</color>
+    <!-- 透明 -->
+    <color name="translucent">#00000000</color>
 </resources>

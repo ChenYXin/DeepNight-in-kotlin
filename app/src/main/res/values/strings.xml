@@ -5,4 +5,15 @@
     <!--MainActivity-->
     <string name="main_activity_item_all">所有</string>
     <string name="main_activity_item_bosom">大胸妹</string>
+    <string name="main_activity_item_buttocks">小翘臀</string>
+    <string name="main_activity_item_stockings">黑丝袜</string>
+    <string name="main_activity_item_legs">美腿控</string>
+    <string name="main_activity_item_pretty">有颜值</string>
+    <string name="main_activity_item_hodgepodge">大杂烩</string>
+    <!--AboutActivity-->
+    <string name="about_activity_back">返回</string>
+    <string name="about_activity_title">DeepNight-in-Kotlin</string>
+    <!--DragPhotoActivity-->
+    <string name="drag_photo_activity_like">收藏</string>
+    <string name="drag_photo_activity_download">下载</string>
 </resources>

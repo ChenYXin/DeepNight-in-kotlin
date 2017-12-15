@@ -5,6 +5,36 @@
     android:background="@color/backcolor"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@color/blue"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableLeft="@mipmap/icon_back"
+            android:paddingLeft="10dp"
+            android:text="@string/about_activity_back"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/about_activity_title"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,22 +44,16 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/deepnight_logo" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Donkor"
-            android:textColor="@color/blue"
-            android:textSize="25sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@android:color/white"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
@@ -50,23 +74,51 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
     </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About me"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="About me"
         android:textColor="@color/blue"
         android:textSize="25sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Author : "
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Donkor"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="10dp">
 
@@ -80,52 +132,53 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="donkor@yeah.net"
             android:autoLink="email"
+            android:text="donkor@yeah.net"
             android:textColor="@color/black"
             android:textSize="15sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
-        android:layout_marginTop="1dp"
         android:paddingRight="20dp"
         android:paddingTop="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="github : "
+            android:text="Github : "
             android:textColor="@color/black"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="https://github.com/ChenYXin"
             android:autoLink="web"
+            android:text="https://github.com/ChenYXin"
             android:textColor="@color/black"
             android:textSize="15sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
-        android:layout_marginTop="1dp"
         android:paddingRight="20dp"
         android:paddingTop="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="csdn_blog : "
+            android:text="csdn : "
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -137,14 +190,15 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
-        android:layout_marginTop="1dp"
         android:paddingRight="20dp"
         android:paddingTop="10dp">
 

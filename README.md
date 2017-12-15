@@ -1,6 +1,7 @@
 # DeepNight-in-kotlin
 DeepNight 陪你度过每一个深夜，妹纸看不停<br>
 看够了代码家的妹纸，来看看豆瓣的妹纸<br>
+
 # Description
 妹纸图片来源:<br>
 - http://www.dbmeinv.com
@@ -12,16 +13,15 @@ DeepNight 陪你度过每一个深夜，妹纸看不停<br>
 
 <img src="https://raw.githubusercontent.com/ChenYXin/DeepNight-in-kotlin/master/Screenshot/all_pic.png" width=25% height=25% />
 
-
-
 # Features
 - Material Design设计风格
 - SwipeRefreshLayout结合RecyclerView下拉刷新上拉加载
 - NavigationView + DrawerLayout + ToolBar
 - Fragment懒加载模式
+- [Kotlin中handler避免内存泄漏](http://blog.csdn.net/donkor_/article/details/78796518)
 - [jsoup 抓取妹纸图片](https://github.com/jhy/jsoup)
 - [glide 图片缓存，加载缩略图，加载高清原图](https://github.com/bumptech/glide)
-- [Kotlin中handler避免内存泄漏](http://blog.csdn.net/donkor_/article/details/78796518)
+- [DragPhotoView高仿微信可拖拽返回PhotoView](https://github.com/githubwing/DragPhotoView)
 
 # Platform
 MacBook Pro (13-inch, 2016, Four Thunderbolt 3 Ports)

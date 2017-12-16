@@ -13,14 +13,14 @@ DeepNight 陪你度过每一个深夜，妹纸看不停<br>
 
 <img src="https://raw.githubusercontent.com/ChenYXin/DeepNight-in-kotlin/master/Screenshot/all_pic.png" width=25% height=25% />
 
-<img src="https://raw.githubusercontent.com/ChenYXin/DeepNight-in-kotlin/master/Screenshot/drag_pic.png" width=25% height=25% />
+<img src="https://raw.githubusercontent.com/ChenYXin/DeepNight-in-kotlin/master/Screenshot/drag_pic.jpeg" width=25% height=25% />
 
 
 # Features
 - Material Design设计风格
-- SwipeRefreshLayout结合RecyclerView下拉刷新上拉加载
-- NavigationView + DrawerLayout + ToolBar
-- Fragment懒加载模式
+- [Kotlin中SwipeRefreshLayout结合RecyclerView下拉刷新上拉加载](http://blog.csdn.net/donkor_/article/details/78820880)
+- [Kotlin实现侧滑抽屉菜单(DrawerLayout+NavigationView+Toolbar)](http://blog.csdn.net/donkor_/article/details/78819081)
+- [Fragment懒加载模式](http://blog.csdn.net/donkor_/article/details/78819081)
 - [Kotlin中handler避免内存泄漏](http://blog.csdn.net/donkor_/article/details/78796518)
 - [jsoup 抓取妹纸图片](https://github.com/jhy/jsoup)
 - [glide 图片缓存，加载缩略图，加载高清原图](https://github.com/bumptech/glide)
@@ -49,7 +49,7 @@ QQ Group : 537891203
 
 # License
 ```
-Copyright (C) 2017 sfsheng0322@126.com
+Copyright (C) 2017 donkor@yeah.net
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

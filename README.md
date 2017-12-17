@@ -26,6 +26,10 @@ DeepNight 陪你度过每一个深夜，妹纸看不停<br>
 - [glide 图片缓存，加载缩略图，加载高清原图](https://github.com/bumptech/glide)
 - [DragPhotoView高仿微信可拖拽返回PhotoView](https://github.com/githubwing/DragPhotoView)
 
+# Download
+[火速下载](http://fir.im/DeepNight)
+<img src="https://raw.githubusercontent.com/ChenYXin/DeepNight-in-kotlin/master/Screenshot/download_pic.jpg" />
+
 # Platform
 MacBook Pro (13-inch, 2016, Four Thunderbolt 3 Ports)
 - macOS High Sierra(10.13.2)

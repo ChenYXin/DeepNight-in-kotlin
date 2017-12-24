@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import com.donkor.deepnight.R
 import com.donkor.deepnight.adapter.CommonAdapter
 import com.donkor.deepnight.mvp.model.bean.CommonBean
@@ -36,11 +35,12 @@ class AllFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener{
         mRvCommonList.layoutManager = LinearLayoutManager(context)
 //        mRvCommonList.layoutManager = GridLayoutManager(context, 2)
         mList = ArrayList()
-        mRvCommonList.setOnScrollListener(object : RecyclerView.OnScrollListener() {
+        mRvCommonList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             var lastVisibleItem:Int?=0
             override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem!! + 1 == mCommomAdapter?.itemCount) {
+                    mCommomAdapter?.changeMoreStatus(mCommomAdapter?.LOAD_MORE!!)
                     mPage= mPage!! +1
                     allData(mPage)
                 }
@@ -80,6 +80,7 @@ class AllFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener{
 
             activity.runOnUiThread({
                 if(mPage!=1){
+                    mCommomAdapter?.changeMoreStatus(mCommomAdapter?.PULLUP_LOAD_MORE!!)
                     mRvCommonList.adapter.notifyDataSetChanged()
                 }else{
                     mCommomAdapter = CommonAdapter(activity, mList)

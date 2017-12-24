@@ -37,11 +37,12 @@ class BosomFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         mRvCommonList.layoutManager = LinearLayoutManager(context)
 //        mRvCommonList.layoutManager = GridLayoutManager(context, 2)
         mList = ArrayList()
-        mRvCommonList.setOnScrollListener(object : RecyclerView.OnScrollListener() {
+        mRvCommonList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             var lastVisibleItem:Int?=0
             override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem!! + 1 == mCommomAdapter?.itemCount) {
+                    mCommomAdapter?.changeMoreStatus(mCommomAdapter?.LOAD_MORE!!)
                     mPage= mPage!! +1
                     bosomData(mPage)
                 }
@@ -71,6 +72,7 @@ class BosomFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
 
             activity.runOnUiThread({
+                mCommomAdapter?.changeMoreStatus(mCommomAdapter?.PULLUP_LOAD_MORE!!)
                 if(mPage!=1){
                     mRvCommonList.adapter.notifyDataSetChanged()
                 }else{

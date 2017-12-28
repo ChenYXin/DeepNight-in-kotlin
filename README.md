@@ -27,7 +27,7 @@ DeepNight 陪你度过每一个深夜，妹纸看不停<br>
 - [DragPhotoView高仿微信可拖拽返回PhotoView](https://github.com/githubwing/DragPhotoView)
 
 # Download
-[火速下载](http://fir.im/DeepNight)
+[火速下载](http://fir.im/DeepNight)<br>
 <img src="https://raw.githubusercontent.com/ChenYXin/DeepNight-in-kotlin/master/Screenshot/download_pic.jpg" />
 
 # Platform

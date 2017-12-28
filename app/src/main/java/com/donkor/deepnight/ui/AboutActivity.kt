@@ -27,30 +27,8 @@ class AboutActivity : AppCompatActivity() {
         btnBack.setOnClickListener({
             finish()
         })
-//        Glide.with(this)
-//                .load("https://ww3.sinaimg.cn/bmiddle/0060lm7Tgy1fmh86a08lnj30hs0np0ul.jpg")
-//                .into(ivLogo)
     }
 
-//    fun onClick(view: View) {
-//        startPhotoActivity(this, view as ImageView)
-//    }
-
-
-//    private fun startPhotoActivity(context: Context, imageView: ImageView) {
-//        val intent = Intent(context, DragPhotoActivity::class.java)
-//        val location = IntArray(2)
-//
-//        imageView.getLocationOnScreen(location)
-//        intent.putExtra("picUrl", "https://ww3.sinaimg.cn/bmiddle/0060lm7Tgy1fmh86a08lnj30hs0np0ul.jpg")
-//        intent.putExtra("left", location[0])
-//        intent.putExtra("top", location[1])
-//        intent.putExtra("height", imageView.height)
-//        intent.putExtra("width", imageView.width)
-//
-//        context.startActivity(intent)
-//        overridePendingTransition(0, 0)
-//    }
     /**
      * 返回当前程序版本名
      */

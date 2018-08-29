@@ -6,21 +6,21 @@ package com.donkor.deepnight.network
 interface ApiService {
     companion object {
         val BASE_URL: String
-            get() = "https://www.dbmeinv.com/dbgroup/"
+            get() = "https://www.dbmeinv.com/"
         val ALL_URL: String
-            get() = "show.htm?pager_offset="
+            get() = "index.htm?pager_offset="
         val BOSOM: String
-            get() = "show.htm?cid=2&pager_offset="
+            get() = "index.htm?cid=2&pager_offset="
         val Buttocks: String
-            get() = "show.htm?cid=6?pager_offset="
+            get() = "index.htm?cid=6?pager_offset="
         val Stockings: String
-            get() = "show.htm?cid=7&pager_offset="
+            get() = "index.htm?cid=7&pager_offset="
         val Legs: String
-            get() = "show.htm?cid=3&pager_offset="
+            get() = "index.htm?cid=3&pager_offset="
         val Pretty: String
-            get() = "show.htm?cid=4&pager_offset="
+            get() = "index.htm?cid=4&pager_offset="
         val Hodgepodge: String
-            get() = "show.htm?cid=5&pager_offset="
+            get() = "index.htm?cid=5&pager_offset="
     }
 
 }
